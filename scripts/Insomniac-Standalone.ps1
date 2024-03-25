@@ -13,7 +13,7 @@
         MinRandomInterval:      30
         MaxRandomInterval:      237
         StartAt:                Current time
-    
+
     Random loading messages taken from:
     https://gist.github.com/meain/6440b706a97d2dd71574769517e7ed32
 
@@ -361,14 +361,14 @@ function C8H10N4O2 {
                 $Settings.TTL.TTLHours = "00"
             }
             if ($HasMinutes) {
-                    
+
                 $Settings.TTL.TTLMinutes = [string](($HasMinutes -replace '\W', '') -replace '[a-zA-Z]', '')
             }
             else {
                 $Settings.TTL.TTLMinutes = "00"
             }
             if ($HasSeconds) {
-                    
+
                 $Settings.TTL.TTLSeconds = [string](($HasSeconds -replace '\W', '') -replace '[a-zA-Z]', '')
             }
             else {
@@ -435,7 +435,7 @@ function C8H10N4O2 {
         }
 
         ## Old versions of PowerShell don't send the key when using Start-Job for some reason, and I just
-        ## don't care enough to figure out why right now. Leaving this else statement here for when I 
+        ## don't care enough to figure out why right now. Leaving this else statement here for when I
         ## inevitably forget why I left this here and have some time to figure it out.
         #
         #else {
@@ -480,10 +480,10 @@ function C8H10N4O2 {
                 if ($Settings.EXE) {
                     Write-ProgressBar -SettingsObject $Settings
                 }
-           
+
                 else {
                     $Completed = ($Settings.Timer.Elapsed.Seconds / $Settings.Interval) * 100
-                
+
                     $ProgressSplat = @{
                         Activity         = $Settings.LoadingMessage
                         Status           = "Progress:"
@@ -845,7 +845,7 @@ if (!(Test-IsNullorEmpty $StartAt)) {
             $LaunchMessage = "Preparations will take approximately: $([Math]::Round($TimeRemaining.TotalSeconds)) seconds (until $BEginRunningAtFormatted)..."
             $LaunchString = "{0}{1}" -f $LaunchMessage, (' ' * ($ConsoleWidth - $LaunchMessage.Length))
             Write-Host $LaunchString -NoNewline
-            
+
             $SleepTime = $TimeRemaining.TotalSeconds * 0.1
             Start-Sleep -Seconds $SleepTime
             $CurrentTime = Get-Date
