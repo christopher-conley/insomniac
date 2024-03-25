@@ -308,7 +308,7 @@ function Write-ProgressBar {
     )
 
     $Message = $SettingsObject.LoadingMessage
-    $ConsoleWidth = ($Host.UI.RawUI.BufferSize.Width - $Message.Length - 7)
+    $ConsoleWidth = ($Host.UI.RawUI.BufferSize.Width - $Message.Length - 9)
 
     while ($SettingsObject.Timer.Elapsed.Seconds -lt $SettingsObject.Interval) {
         $Progress = [math]::Round(($Settings.Timer.Elapsed.Seconds / $SettingsObject.Interval) * 100)
