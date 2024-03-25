@@ -14,7 +14,6 @@ param(
 $ScriptName = "☕ Insomniac ☕"
 $ScriptVersion = "2024.03.24.1825"
 $Caller = $MyInvocation.MyCommand.Name.ToString()
-$ScriptPath = $MyInvocation.MyCommand.Source
 
 function Get-CenteredString {
     param (
@@ -43,82 +42,93 @@ function Test-IsNullorEmpty {
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)] $TestObject
     )
 
-    if ($null -eq $TestObject) {
-        return $true
+    begin {
+        try {
+            $ObjectType = $TestObject.GetType().Name
+        }
+        catch {
+            return
+        }
     }
 
-    $ObjectType = $TestObject.GetType().Name
+    process {
 
-    switch ($ObjectType) {
-        'String' {
-            if ($TestObject -eq '' -or $TestObject.Length -eq 0) {
-                return $true
-            }
-            else {
-                return $false
-            }
-            break
+        ## Shouldn't be necessary because of the catch above, but eh, whatever
+        if ($null -eq $TestObject) {
+            return $true
         }
+        
+        switch ($ObjectType) {
+            'String' {
+                if ($TestObject -eq '' -or $TestObject.Length -eq 0) {
+                    return $true
+                }
+                else {
+                    return $false
+                }
+                break
+            }
 
-        'PSCustomObject' {
-            if (@($TestObject.psobject.Properties).Count -eq 0) {
-                return $true
+            'PSCustomObject' {
+                if (@($TestObject.psobject.Properties).Count -eq 0) {
+                    return $true
+                }
+                else {
+                    return $false
+                }
+                break
             }
-            else {
-                return $false
-            }
-            break
-        }
 
-        'Hashtable' {
-            if ($TestObject.Count -eq 0) {
-                return $true
-            }
-            else {
-                return $false
-            }
-            break
-        }
-
-        'DateTime' {
-            if (!(New-TimeSpan -Start $TestObject -End (Get-Date))) {
-                return $true
-            }
-            else {
-                return $false
-            }
-        }
-
-        'Object[]' {
-            if ($TestObject.GetType().BaseType.Name -eq 'Array') {
+            'Hashtable' {
                 if ($TestObject.Count -eq 0) {
                     return $true
                 }
                 else {
                     return $false
                 }
+                break
             }
-            else {
-                ## Don't know what this object is.
+
+            'DateTime' {
+                if (!(New-TimeSpan -Start $TestObject -End (Get-Date))) {
+                    return $true
+                }
+                else {
+                    return $false
+                }
+            }
+
+            'Object[]' {
+                if ($TestObject.GetType().BaseType.Name -eq 'Array') {
+                    if ($TestObject.Count -eq 0) {
+                        return $true
+                    }
+                    else {
+                        return $false
+                    }
+                }
+                else {
+                    ## Don't know what this object is.
+                    Write-Error -Message "Object of type $ObjectType is not supported"
+                    throw New-Object System.NotSupportedException
+                }
+                break
+            }
+
+            Default {
                 Write-Error -Message "Object of type $ObjectType is not supported"
                 throw New-Object System.NotSupportedException
             }
-            break
         }
 
-        Default {
-            Write-Error -Message "Object of type $ObjectType is not supported"
-            throw New-Object System.NotSupportedException
-        }
-    
-    
+        ## We should never get here
+
+        Write-Error -Message "Object of type $ObjectType is not supported"
+        throw New-Object System.NotSupportedException
     }
+    end {
 
-    ## We should never get here
-
-    Write-Error -Message "Object of type $ObjectType is not supported"
-    throw New-Object System.NotSupportedException
-
+    }
 }
 
 function Write-MultiStreamMessage {
