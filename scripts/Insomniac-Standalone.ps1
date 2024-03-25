@@ -158,7 +158,7 @@ $ScriptVersion = "2024.03.24.1825"
 $Caller = $MyInvocation.MyCommand.Name.ToString()
 $ScriptPath = $MyInvocation.MyCommand.Source
 
-function New-CenteredString {
+function Get-CenteredString {
     param (
         [Parameter(Mandatory = $true)] [array] $String,
         [Parameter(Mandatory = $false)] [int] $Width = $Host.UI.RawUI.BufferSize.Width
@@ -175,9 +175,9 @@ function New-CenteredString {
 
 function Show-VersionAndLicense {
     $LicenseText = "CgBNAEkAVAAgAEwAaQBjAGUAbgBzAGUACgAKAEMAbwBwAHkAcgBpAGcAaAB0ACAAKABjACkAIAAyADAAMgA0ACAAQwBoAHIAaQBzAHQAbwBwAGgAZQByACAAQwBvAG4AbABlAHkACgAKAFAAZQByAG0AaQBzAHMAaQBvAG4AIABpAHMAIABoAGUAcgBlAGIAeQAgAGcAcgBhAG4AdABlAGQALAAgAGYAcgBlAGUAIABvAGYAIABjAGgAYQByAGcAZQAsACAAdABvACAAYQBuAHkAIABwAGUAcgBzAG8AbgAgAG8AYgB0AGEAaQBuAGkAbgBnACAAYQAgAGMAbwBwAHkACgBvAGYAIAB0AGgAaQBzACAAcwBvAGYAdAB3AGEAcgBlACAAYQBuAGQAIABhAHMAcwBvAGMAaQBhAHQAZQBkACAAZABvAGMAdQBtAGUAbgB0AGEAdABpAG8AbgAgAGYAaQBsAGUAcwAgACgAdABoAGUAIAAiAFMAbwBmAHQAdwBhAHIAZQAiACkALAAgAHQAbwAgAGQAZQBhAGwACgBpAG4AIAB0AGgAZQAgAFMAbwBmAHQAdwBhAHIAZQAgAHcAaQB0AGgAbwB1AHQAIAByAGUAcwB0AHIAaQBjAHQAaQBvAG4ALAAgAGkAbgBjAGwAdQBkAGkAbgBnACAAdwBpAHQAaABvAHUAdAAgAGwAaQBtAGkAdABhAHQAaQBvAG4AIAB0AGgAZQAgAHIAaQBnAGgAdABzAAoAdABvACAAdQBzAGUALAAgAGMAbwBwAHkALAAgAG0AbwBkAGkAZgB5ACwAIABtAGUAcgBnAGUALAAgAHAAdQBiAGwAaQBzAGgALAAgAGQAaQBzAHQAcgBpAGIAdQB0AGUALAAgAHMAdQBiAGwAaQBjAGUAbgBzAGUALAAgAGEAbgBkAC8AbwByACAAcwBlAGwAbAAKAGMAbwBwAGkAZQBzACAAbwBmACAAdABoAGUAIABTAG8AZgB0AHcAYQByAGUALAAgAGEAbgBkACAAdABvACAAcABlAHIAbQBpAHQAIABwAGUAcgBzAG8AbgBzACAAdABvACAAdwBoAG8AbQAgAHQAaABlACAAUwBvAGYAdAB3AGEAcgBlACAAaQBzAAoAZgB1AHIAbgBpAHMAaABlAGQAIAB0AG8AIABkAG8AIABzAG8ALAAgAHMAdQBiAGoAZQBjAHQAIAB0AG8AIAB0AGgAZQAgAGYAbwBsAGwAbwB3AGkAbgBnACAAYwBvAG4AZABpAHQAaQBvAG4AcwA6AAoACgBUAGgAZQAgAGEAYgBvAHYAZQAgAGMAbwBwAHkAcgBpAGcAaAB0ACAAbgBvAHQAaQBjAGUAIABhAG4AZAAgAHQAaABpAHMAIABwAGUAcgBtAGkAcwBzAGkAbwBuACAAbgBvAHQAaQBjAGUAIABzAGgAYQBsAGwAIABiAGUAIABpAG4AYwBsAHUAZABlAGQAIABpAG4AIABhAGwAbAAKAGMAbwBwAGkAZQBzACAAbwByACAAcwB1AGIAcwB0AGEAbgB0AGkAYQBsACAAcABvAHIAdABpAG8AbgBzACAAbwBmACAAdABoAGUAIABTAG8AZgB0AHcAYQByAGUALgAKAAoAVABIAEUAIABTAE8ARgBUAFcAQQBSAEUAIABJAFMAIABQAFIATwBWAEkARABFAEQAIAAiAEEAUwAgAEkAUwAiACwAIABXAEkAVABIAE8AVQBUACAAVwBBAFIAUgBBAE4AVABZACAATwBGACAAQQBOAFkAIABLAEkATgBEACwAIABFAFgAUABSAEUAUwBTACAATwBSAAoASQBNAFAATABJAEUARAAsACAASQBOAEMATABVAEQASQBOAEcAIABCAFUAVAAgAE4ATwBUACAATABJAE0ASQBUAEUARAAgAFQATwAgAFQASABFACAAVwBBAFIAUgBBAE4AVABJAEUAUwAgAE8ARgAgAE0ARQBSAEMASABBAE4AVABBAEIASQBMAEkAVABZACwACgBGAEkAVABOAEUAUwBTACAARgBPAFIAIABBACAAUABBAFIAVABJAEMAVQBMAEEAUgAgAFAAVQBSAFAATwBTAEUAIABBAE4ARAAgAE4ATwBOAEkATgBGAFIASQBOAEcARQBNAEUATgBUAC4AIABJAE4AIABOAE8AIABFAFYARQBOAFQAIABTAEgAQQBMAEwAIABUAEgARQAKAEEAVQBUAEgATwBSAFMAIABPAFIAIABDAE8AUABZAFIASQBHAEgAVAAgAEgATwBMAEQARQBSAFMAIABCAEUAIABMAEkAQQBCAEwARQAgAEYATwBSACAAQQBOAFkAIABDAEwAQQBJAE0ALAAgAEQAQQBNAEEARwBFAFMAIABPAFIAIABPAFQASABFAFIACgBMAEkAQQBCAEkATABJAFQAWQAsACAAVwBIAEUAVABIAEUAUgAgAEkATgAgAEEATgAgAEEAQwBUAEkATwBOACAATwBGACAAQwBPAE4AVABSAEEAQwBUACwAIABUAE8AUgBUACAATwBSACAATwBUAEgARQBSAFcASQBTAEUALAAgAEEAUgBJAFMASQBOAEcAIABGAFIATwBNACwACgBPAFUAVAAgAE8ARgAgAE8AUgAgAEkATgAgAEMATwBOAE4ARQBDAFQASQBPAE4AIABXAEkAVABIACAAVABIAEUAIABTAE8ARgBUAFcAQQBSAEUAIABPAFIAIABUAEgARQAgAFUAUwBFACAATwBSACAATwBUAEgARQBSACAARABFAEEATABJAE4ARwBTACAASQBOACAAVABIAEUACgBTAE8ARgBUAFcAQQBSAEUALgAKAA=="
-    Write-Host $(New-CenteredString -String "`n`n$ScriptName")
-    Write-Host $(New-CenteredString -String "Version: $ScriptVersion`n")
-    Write-Host $(New-CenteredString -String "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($LicenseText)))")
+    Write-Host $(Get-CenteredString -String "`n`n$ScriptName")
+    Write-Host $(Get-CenteredString -String "Version: $ScriptVersion`n")
+    Write-Host $(Get-CenteredString -String "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($LicenseText)))")
 }
 
 function Write-MultiStreamMessage {
@@ -239,7 +239,7 @@ function Write-ProgressBar {
 
     $ProgressString = "{0} {1}% [{2}]" -f $Message, "100", ("#" * ($ConsoleWidth - 1))
     Write-Host -ForegroundColor Yellow $ProgressString -NoNewline
-    Write-Host
+    Write-Information -MessageData "`n" -InformationAction 'Continue'
     Clear-Host
 }
 function Start-ScriptCleanup {
@@ -412,7 +412,7 @@ function C8H10N4O2 {
 
         if ($Settings.Warnings.Count -gt 0) {
             Write-MultiStreamMessage -Timestamp -Stream 'warning' -Caller "$Caller" -Messages $Settings.Warnings
-            Write-Host "`n"
+            Write-Information -MessageData "`n" -InformationAction 'Continue'
             Write-MultiStreamMessage -Timestamp -Stream 'warning' -Caller "$Caller" "Warning messages will clear in 5 seconds."
             Start-Sleep 5
             $LoopEnd = $LoopEnd.AddSeconds(5)
@@ -839,7 +839,7 @@ if (!(Test-IsNullorEmpty $StartAt)) {
 
         while ($CurrentTime -lt $BeginRunningAt) {
             Clear-Host
-            Write-Host "Preparing to launch... 🚀`n"
+            Write-Information -MessageData "Preparing to launch... 🚀`n" -InformationAction 'Continue'
 
             $TimeRemaining = New-TimeSpan -Start $CurrentTime -End $BeginRunningAt
             $LaunchMessage = "Preparations will take approximately: $([Math]::Round($TimeRemaining.TotalSeconds)) seconds (until $BEginRunningAtFormatted)..."
