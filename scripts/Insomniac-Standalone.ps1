@@ -180,6 +180,89 @@ function Show-VersionAndLicense {
     Write-Host $(Get-CenteredString -String "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($LicenseText)))")
 }
 
+function Test-IsNullorEmpty {
+    param(
+        [Parameter(Mandatory = $false, ValueFromPipeline = $true)] $TestObject
+    )
+
+    if ($null -eq $TestObject) {
+        return $true
+    }
+
+    $ObjectType = $TestObject.GetType().Name
+
+    switch ($ObjectType) {
+        'String' {
+            if ($TestObject -eq '' -or $TestObject.Length -eq 0) {
+                return $true
+            }
+            else {
+                return $false
+            }
+            break
+        }
+
+        'PSCustomObject' {
+            if (@($TestObject.psobject.Properties).Count -eq 0) {
+                return $true
+            }
+            else {
+                return $false
+            }
+            break
+        }
+
+        'Hashtable' {
+            if ($TestObject.Count -eq 0) {
+                return $true
+            }
+            else {
+                return $false
+            }
+            break
+        }
+
+        'DateTime' {
+            if (!(New-TimeSpan -Start $TestObject -End (Get-Date))) {
+                return $true
+            }
+            else {
+                return $false
+            }
+        }
+
+        'Object[]' {
+            if ($TestObject.GetType().BaseType.Name -eq 'Array') {
+                if ($TestObject.Count -eq 0) {
+                    return $true
+                }
+                else {
+                    return $false
+                }
+            }
+            else {
+                ## Don't know what this object is.
+                Write-Error -Message "Object of type $ObjectType is not supported"
+                throw New-Object System.NotSupportedException
+            }
+            break
+        }
+
+        Default {
+            Write-Error -Message "Object of type $ObjectType is not supported"
+            throw New-Object System.NotSupportedException
+        }
+    
+    
+    }
+
+    ## We should never get here
+
+    Write-Error -Message "Object of type $ObjectType is not supported"
+    throw New-Object System.NotSupportedException
+
+}
+
 function Write-MultiStreamMessage {
     param (
         [Parameter(Mandatory = $false)] [string] $Caller,
