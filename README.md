@@ -2,7 +2,7 @@
  
 Can't run the (excellent software) [Caffeine](https://www.zhornsoftware.co.uk/caffeine/) due to restrictions? Well, here's a poor approximation in PowerShell!
 
-Disclaimer: I have no affliation with Zhorn Software, nor do they endorse this script in any way, shape, form, or function.
+Disclaimer: I have no affliation with Zhorn Software, nor do they endorse this script in any way, shape, form, or fashion.
 The purpose of this script is to enable similar functionality in an environment where you might not necessarily have the ability to run arbitrary executables.
 
 Here's the `Get-Help` output for right now until I actually write a README:
