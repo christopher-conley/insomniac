@@ -151,12 +151,12 @@ begin {
         )
 
         $Message = $SettingsObject.LoadingMessage
-        $ConsoleWidth = ($Host.UI.RawUI.BufferSize.Width - $Message.Length - 9)
+        $ConsoleWidth = ($Host.UI.RawUI.BufferSize.Width - $Message.Length - 10)
 
         while ($SettingsObject.Timer.Elapsed.Seconds -lt $SettingsObject.Interval) {
             $Progress = [math]::Round(($SettingsObject.Timer.Elapsed.Seconds / $SettingsObject.Interval) * 100)
             $ProgressBar = ([math]::Round(($Progress / 100) * $ConsoleWidth))
-            $ProgressBarString = "#" * $ProgressBar
+            $ProgressBarString = ("#" * $ProgressBar) + '🚀'
             $ProgressString = "{0} {1}% [{2}{3}]" -f $Message, $Progress, $ProgressBarString, (' ' * ($ConsoleWidth - $ProgressBar))
 
             Write-Host -ForegroundColor Yellow $ProgressString -NoNewline
