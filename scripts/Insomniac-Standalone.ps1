@@ -561,7 +561,7 @@ begin {
 
                             $ProgressSplat = @{
                                 Activity         = $Settings.LoadingMessage
-                                Status           = "Progress:"
+                                Status           = " "
                                 PercentComplete  = $Completed
                                 CurrentOperation = $CurrentOperation
                                 SecondsRemaining = ($Settings.Interval - $Settings.Timer.Elapsed.Seconds)
