@@ -18,8 +18,8 @@ using System.Runtime.InteropServices;
 [assembly:AssemblyProduct("Insomniac")]
 [assembly:AssemblyCopyright("Copyright Â© 2024 Christopher Conley")]
 [assembly:AssemblyTrademark("")]
-[assembly:AssemblyVersion("2024.03.27.1758")]
-[assembly:AssemblyFileVersion("2024.03.27.1758")]
+[assembly:AssemblyVersion("2024.03.29.0507")]
+[assembly:AssemblyFileVersion("2024.03.29.0507")]
 // not displayed in details tab of properties dialog, but embedded to file
 [assembly:AssemblyDescription("Stimulants for your console")]
 [assembly:AssemblyCompany("")]
