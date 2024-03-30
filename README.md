@@ -4,7 +4,7 @@ Can't run the (excellent software) [Caffeine](https://www.zhornsoftware.co.uk/ca
 
 Disclaimer: I have no affliation with Zhorn Software, nor do they endorse this script in any way, shape, form, or fashion.
 
-The purpose of this script is to enable similar functionality in an environment where you might not necessarily have the ability to run arbitrary executables. There **is** an executable available in all the [releaes](https://github.com/christopher-conley/insomniac/releases), but it's not necessary to run the script, it's just another option; the script is completely standalone and has no external dependencies.
+The purpose of this script is to enable similar functionality in an environment where you might not necessarily have the ability to run arbitrary executables. There **is** an executable available in all the [releases](https://github.com/christopher-conley/insomniac/releases), but it's not necessary to run the script, it's just another option; the script is completely standalone and has no external dependencies.
 
 Here's the `Get-Help` output for right now until I actually write a README:
 
