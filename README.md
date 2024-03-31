@@ -6,6 +6,28 @@ Disclaimer: I have no affliation with Zhorn Software, nor do they endorse this s
 
 The purpose of this script is to enable similar functionality in an environment where you might not necessarily have the ability to run arbitrary executables. There **is** an executable available in all the [releases](https://github.com/christopher-conley/insomniac/releases), but it's not necessary to run the script, it's just another option; the script is completely standalone and has no external dependencies.
 
+# TESTIMONIALS
+
+```
+"Thanks, I hate it"
+```
+
+```
+"lol I just install Move Mouse from the MS Store"
+```
+
+```
+"I was going to respond with the 3 line script I use to keep mine awake but then I looked at yours and realized... brevity was not the point."
+```
+
+```
+"Lol, this is like those "enterprise architecture" Hello World or Fizz Buzz examples people have made to make fun of overly complicated projects."
+```
+
+And every single one of these comments is correct! It's 100% over-engineered and overcomplicated on the inside, but it's fast, it works, it's configurable, and the only thing that you need to run it is a PowerShell console.
+
+___
+
 Here's the `Get-Help` output for right now until I actually write a README:
 
 ```
