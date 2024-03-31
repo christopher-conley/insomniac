@@ -17,11 +17,13 @@ The purpose of this script is to enable similar functionality in an environment 
 ```
 
 ```
-"I was going to respond with the 3 line script I use to keep mine awake but then I looked at yours and realized... brevity was not the point."
+"I was going to respond with the 3 line script I use to keep mine awake but
+then I looked at yours and realized... brevity was not the point."
 ```
 
 ```
-"Lol, this is like those "enterprise architecture" Hello World or Fizz Buzz examples people have made to make fun of overly complicated projects."
+"Lol, this is like those "enterprise architecture" Hello World or Fizz Buzz examples
+people have made to make fun of overly complicated projects."
 ```
 
 And every single one of these comments is correct! It's 100% over-engineered and overcomplicated on the inside, but it's fast, it works, it's configurable, and the only thing that you need to run it is a PowerShell console.
